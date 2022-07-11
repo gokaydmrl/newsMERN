@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
-import { getOpinionAction } from "../actions/getOpinionAction"
+import { getOpinionAction } from "../actions/getOpinionAction";
 
 export function AddOpinion() {
   const [opinions, setOpinions] = useState([]);
 
   useEffect(() => {
     const handler = async () => {
-      const opinionItems = await getOpinionAction();
-      setOpinions(opinionItems.data);
-      console.log("op items", opinionItems);
+      const response = await getOpinionAction();
+      setOpinions(response.data);
+      // console.log("op items");
     };
     console.log("opss", opinions);
     handler();
@@ -19,11 +19,13 @@ export function AddOpinion() {
       {opinions.map((opinionItem) => {
         return (
           <div key={opinionItem._id}>
-            <p>{opinionItem.userName}</p>
-            <p>{opinionItem.message}</p>
+            <p>{opinionItem.fullName}</p>
+            <p>{opinionItem.opinion}</p>
           </div>
         );
       })}
     </div>
   );
 }
+
+export default AddOpinion;

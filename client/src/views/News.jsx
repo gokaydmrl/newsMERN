@@ -8,7 +8,7 @@ function Haberler() {
     const handler = async () => {
       const news = await getNewsAction();
       setHaberler(news);
-      // console.log(news);
+      console.log("news", news);
     };
     handler();
   }, []);
