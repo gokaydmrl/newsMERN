@@ -1,4 +1,4 @@
-const Opinion = require("../models/dbmodels");
+const Opinion = require("../models/dbModelOpinion");
 
 exports.getOpinionsHandler = async (req, res) => {
   const opininonItem = await Opinion.find();
@@ -8,7 +8,7 @@ exports.getOpinionsHandler = async (req, res) => {
 /////
 
 exports.createOpinionHandler = async (req, res) => {
-//   const { fullName, opinion } = req.body;
+   const { fullName, opinion } = req.body;
 
   const commentItem = await Opinion.create({
     fullName,
@@ -16,18 +16,39 @@ exports.createOpinionHandler = async (req, res) => {
   });
 };
 
-
-
 // Opinion.create({
-//     fullName:"gökay",
-//     opinion:"çok iyi"
+//     fullName:"djokovic",
+//     opinion:"the goat"
 // })
 
 //////
 
-const Development = require("../models/dbmodels");
+const Development = require("../models/dbModelDevelopment");
 
 exports.getNewsHandler = async (req, res) => {
   const developmentItem = await Development.find();
   res.status(200).json(developmentItem);
+};
+
+// Development.create({
+//   title: "world",
+// content: "energy crisis"
+// })
+
+// get one news
+
+exports.getNewsItemHandler = async (req, res) => {
+  const { id } = req.params;
+
+  const newsItem = await Development.findById(id);
+  res.status(200).json(newsItem);
+};
+
+// get one opinion
+
+exports.getOpinionItemHandler = async (req, res) => {
+  const { id } = req.params;
+
+  const opinionItem = await Opinion.findById(id);
+  res.status(200).json(opinionItem);
 };
