@@ -8,12 +8,13 @@ exports.getOpinionsHandler = async (req, res) => {
 /////
 
 exports.createOpinionHandler = async (req, res) => {
-   const { fullName, opinion } = req.body;
+  const { fullName, opinion } = req.body;
 
   const commentItem = await Opinion.create({
     fullName,
     opinion,
   });
+  res.status(201).json(commentItem);
 };
 
 // Opinion.create({
