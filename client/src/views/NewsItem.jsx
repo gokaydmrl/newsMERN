@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 import CommentInputs from "../components/CommentInputs";
+import Comments from "../components/Comments";
 
 const NewsItem = () => {
   const { id } = useParams();
@@ -64,6 +65,7 @@ const NewsItem = () => {
         handleSubmit={handleSubmit}
         opinion={opinion}
       />
+      <Comments/>
     </div>
   );
 };
