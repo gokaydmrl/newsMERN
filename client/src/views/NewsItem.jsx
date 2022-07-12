@@ -6,7 +6,7 @@ import { useState } from "react";
 import CommentInputs from "../components/CommentInputs";
 
 const NewsItem = () => {
-  const  id  = useParams();
+  const { id } = useParams();
   console.log("haber idsi: ", id);
   const [haberItem, setHaberItem] = useState({});
 
@@ -39,16 +39,21 @@ const NewsItem = () => {
     console.log("submit got clicked");
     // createOpinionAction(opinion);
     try {
-      const response = axios.post(
+      const commentResponse = axios.post(
         `http://localhost:3001/opinions/${id}`,
-        opinion
+        { ...opinion, id }
       );
-      console.log("newitem resp", response.data);
-      return response;
+      console.log("newitem resp", commentResponse);
+      return commentResponse;
     } catch (error) {
       console.log(error);
     }
   };
+
+  // useEffect(() => {
+  //   const getHandler = axios.get(`http://localhost:3001/opinions/${id}`);
+  //   console.log("get yourm", getHandler);
+  // }, []);
 
   return (
     <div>

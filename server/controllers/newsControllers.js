@@ -8,14 +8,14 @@ exports.getOpinionsHandler = async (req, res) => {
 /////
 
 exports.createOpinionHandler = async (req, res) => {
-  const id = req.params;
-  console.log("req.params.id", req.params);
+  const id = req.params.id;
+  console.log("req.params.id", id);
   const { fullName, opinion } = req.body;
 
   const commentItem = await Opinion.create({
     fullName,
     opinion,
-    id,
+    categoryID: id,
   });
   res.status(201).json(commentItem);
 };
