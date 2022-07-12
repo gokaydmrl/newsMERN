@@ -20,7 +20,7 @@ const NewsItem = () => {
     handler();
   }, []);
 
-  console.log("haberitem", haberItem._id);
+  // console.log("haberitem", haberItem._id);
 
   /// comment functionality
   const [opinion, setOpinion] = useState({
@@ -42,7 +42,7 @@ const NewsItem = () => {
     try {
       const commentResponse = axios.post(
         `http://localhost:3001/opinions/${id}`,
-        { ...opinion, id }
+        opinion
       );
       console.log("newitem resp", commentResponse);
       return commentResponse;
@@ -65,7 +65,7 @@ const NewsItem = () => {
         handleSubmit={handleSubmit}
         opinion={opinion}
       />
-      <Comments/>
+      <Comments />
     </div>
   );
 };
