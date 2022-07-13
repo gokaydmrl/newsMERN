@@ -10,13 +10,14 @@ const Comments = () => {
 
   useEffect(() => {
     const handler = async () => {
-      const response = await axios.get("http://localhost:3001/opinions");
-      const commentArray = response.data.filter((item) => {
-        return item.categoryID === id;
-      });
-      setComments(commentArray);
+      const response = await axios.get(
+        `http://localhost:3001/opinionsByNewId/${id}`
+      );
+      // const commentArray = response.data.filter((item) => {
+      //   return item.categoryID === id;
+      // });
+      setComments(response.data);
       console.log("comment resp", response.data);
-      console.log("comment array", commentArray);
     };
     handler();
 

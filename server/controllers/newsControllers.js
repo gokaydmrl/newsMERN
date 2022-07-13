@@ -35,8 +35,8 @@ exports.getNewsHandler = async (req, res) => {
 };
 
 // Development.create({
-//   title: "world",
-// content: "energy crisis"
+//   title: "covid",
+// content: "rising"
 // })
 
 // get one news
@@ -51,8 +51,19 @@ exports.getNewsItemHandler = async (req, res) => {
 // get one opinion
 
 exports.getOpinionItemHandler = async (req, res) => {
-  const { id } = req.params;
+  const id = req.params.id;
+ // console.log("req.params.id", id);
 
   const opinionItem = await Opinion.findById(id);
+  res.status(200).json(opinionItem);
+};
+
+exports.getOpinionsByNewId = async (req, res) => {
+  const id = req.params.id;
+ // console.log("req.params.id", id);
+
+  const opinionItem = await Opinion.find({
+    categoryID: id,
+  });
   res.status(200).json(opinionItem);
 };

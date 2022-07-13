@@ -8,5 +8,6 @@ router.get("/news/:id", newsControllers.getNewsItemHandler);
 router.get("/opinions/:id", newsControllers.getOpinionItemHandler);
 router.get("/opinions", newsControllers.getOpinionsHandler);
 router.post("/opinions/:id", newsControllers.createOpinionHandler);
+router.get("/opinionsByNewId/:id", newsControllers.getOpinionsByNewId);
 
 module.exports = router;
