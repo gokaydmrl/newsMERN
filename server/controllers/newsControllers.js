@@ -21,8 +21,9 @@ exports.createOpinionHandler = async (req, res) => {
 };
 
 // Opinion.create({
-//     fullName:"djokovic",
-//     opinion:"the goat"
+//     fullName:"aşıcı",
+//     opinion:"aşı yapıyoruz",
+// categoryID: "62ce72d5dc0a9ebc017da311"
 // })
 
 //////
