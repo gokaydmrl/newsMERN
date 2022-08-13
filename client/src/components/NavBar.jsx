@@ -8,7 +8,7 @@ const Menu = () => {
   return (
     <div>
       <h1>lilMashriq</h1>
-      <nav>
+     {/* <nav>
         <div className="App">
           <nav>
             <Link to="/home">Home</Link>
@@ -19,11 +19,11 @@ const Menu = () => {
           <nav>
             <Link to="/">Comments</Link>
           </nav>
-          {/* <nav>
+           <nav>
             <Link to={`home/${id}`}>biraz bekle</Link>
-          </nav> */}
+          </nav> 
         </div>
-      </nav>
+      </nav>  */}
     </div>
   );
 };

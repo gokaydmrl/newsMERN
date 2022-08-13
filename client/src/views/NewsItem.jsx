@@ -10,6 +10,7 @@ const NewsItem = () => {
   const { id } = useParams();
   console.log("haber idsi: ", id);
   const [haberItem, setHaberItem] = useState({});
+  const [code, setCode] = useState(null);
 
   useEffect(() => {
     const handler = async () => {
@@ -35,16 +36,19 @@ const NewsItem = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("submit got clicked");
     // createOpinionAction(opinion);
     try {
-      const commentResponse = axios.post(
+      const commentResponse = await axios.post(
         `http://localhost:3001/opinions/${id}`,
         opinion
       );
       console.log("newitem resp", commentResponse);
+      console.log("status codeee", commentResponse.status);
+      setCode(commentResponse.status);
+
       return commentResponse;
     } catch (error) {
       console.log(error);
@@ -65,7 +69,7 @@ const NewsItem = () => {
         handleSubmit={handleSubmit}
         opinion={opinion}
       />
-      <Comments />
+      <Comments opinion={opinion} code={code} />
     </div>
   );
 };
