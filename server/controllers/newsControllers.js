@@ -1,5 +1,13 @@
 const Opinion = require("../models/dbModelOpinion");
 
+// Opinion.deleteMany({}, (err, res) => {
+//   if (err) {
+//     console.log(err);
+//   } else if (res) {
+//     console.log("başarılı");
+//   }
+// });
+
 exports.getOpinionsHandler = async (req, res) => {
   const opininonItem = await Opinion.find();
   res.status(200).json(opininonItem);
@@ -53,7 +61,7 @@ exports.getNewsItemHandler = async (req, res) => {
 
 exports.getOpinionItemHandler = async (req, res) => {
   const id = req.params.id;
- // console.log("req.params.id", id);
+  // console.log("req.params.id", id);
 
   const opinionItem = await Opinion.findById(id);
   res.status(200).json(opinionItem);
@@ -61,7 +69,7 @@ exports.getOpinionItemHandler = async (req, res) => {
 
 exports.getOpinionsByNewId = async (req, res) => {
   const id = req.params.id;
- // console.log("req.params.id", id);
+  // console.log("req.params.id", id);
 
   const opinionItem = await Opinion.find({
     categoryID: id,

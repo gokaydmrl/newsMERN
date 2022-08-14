@@ -24,6 +24,8 @@ app.get("/", function (req, res) {
 
 app.use("/", require("./routes/newsRouter"));
 
+
+
 app.listen(3001, function () {
   console.log("express server is running on port 3001");
 });

@@ -2,8 +2,11 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { memo } from "react";
 
-const Comments = ({ opinion, code }) => {
+const Comments = ({ code }) => {
+  console.log("comments rendered");
+
   const { id } = useParams();
 
   const [comments, setComments] = useState([]);
@@ -14,19 +17,11 @@ const Comments = ({ opinion, code }) => {
       const response = await axios.get(
         `http://localhost:3001/opinionsByNewId/${id}`
       );
-      // const commentArray = response.data.filter((item) => {
-      //   return item.categoryID === id;
-      // });
       setComments(response.data);
       console.log("comment resp", response.data);
     };
     handler();
-  }, []);
-
-  if (code === 201) {
-    comments.push(opinion);
-  }
-  console.log("this code", code);
+  }, [code]);
 
   return (
     <div>
@@ -42,4 +37,4 @@ const Comments = ({ opinion, code }) => {
   );
 };
 
-export default Comments;
+export default memo(Comments);

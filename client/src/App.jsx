@@ -13,7 +13,6 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
         <NavBar />
         {/* <Routes>
           <Route path="/makecomment" element={<PostOpinion />} />
@@ -27,7 +26,6 @@ function App() {
         <Routes>
           <Route path="/home/:id" element={<NewsItem />} />
         </Routes>
-      </BrowserRouter>
     </div>
   );
 }
