@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useState } from "react";
 import Comments from "./Comments";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { useMemo } from "react";
 
 const CommentInputs = () => {
   console.log("comment inputs rendered");
@@ -17,12 +18,22 @@ const CommentInputs = () => {
     opinion: "",
   });
 
-  const handleChange = (e) => {
-    setOpinion({
-      ...opinion,
-      [e.target.name]: e.target.value,
-    });
-  };
+  // const handleChange = useCallback(
+  //   (e) => {
+  //     setOpinion({
+  //       ...opinion,
+  //       [e.target.name]: e.target.value,
+  //     });
+  //   },
+  //   [code]
+  // );
+
+   const handleChange = (e) => {
+     setOpinion({
+       ...opinion,
+       [e.target.name]: e.target.value,
+     });
+   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();

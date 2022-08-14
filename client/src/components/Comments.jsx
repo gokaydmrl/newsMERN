@@ -27,7 +27,13 @@ const Comments = ({ code }) => {
     <div>
       {comments.map((comment) => {
         return (
-          <div key={comment._id}>
+          <div
+            style={{
+              textAlign: "left",
+              marginLeft: "300px",
+            }}
+            key={comment._id}
+          >
             <p>{comment.fullName}</p>
             <p>{comment.opinion}</p>
           </div>
