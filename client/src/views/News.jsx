@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getNewsAction } from "../actions/getNewsAction";
 import { Link } from "react-router-dom";
-import NewsItem from "./NewsItem";
 
 function Haberler() {
   const [haberler, setHaberler] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const { id } = useParams();
   console.log("id", id);
@@ -15,13 +15,14 @@ function Haberler() {
       const news = await getNewsAction();
       setHaberler(news);
       console.log("news", news);
+      setLoading(false);
     };
     handler();
   }, []);
 
-
   return (
     <div>
+      {loading && "Loading..."}
       {haberler.map((haber) => {
         return (
           <Link key={haber._id} to={`/home/${haber._id}`}>

@@ -22,8 +22,6 @@ function App() {
         </Routes> */}
         <Routes>
           <Route path="/home" element={<News />} />
-        </Routes>
-        <Routes>
           <Route path="/home/:id" element={<NewsItem />} />
         </Routes>
     </div>

@@ -12,7 +12,7 @@ const Comments = ({ code }) => {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    console.log("effect");
+    console.log("get comment effecti çalıştı");
     const handler = async () => {
       const response = await axios.get(
         `http://localhost:3001/opinionsByNewId/${id}`
@@ -30,7 +30,7 @@ const Comments = ({ code }) => {
           <div
             style={{
               textAlign: "left",
-              marginLeft: "300px",
+              marginLeft: "450px",
             }}
             key={comment._id}
           >

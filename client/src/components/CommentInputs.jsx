@@ -18,27 +18,16 @@ const CommentInputs = () => {
     opinion: "",
   });
 
-  // const handleChange = useCallback(
-  //   (e) => {
-  //     setOpinion({
-  //       ...opinion,
-  //       [e.target.name]: e.target.value,
-  //     });
-  //   },
-  //   [code]
-  // );
-
-   const handleChange = (e) => {
-     setOpinion({
-       ...opinion,
-       [e.target.name]: e.target.value,
-     });
-   };
+  const handleChange = (e) => {
+    setOpinion({
+      ...opinion,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("submit got clicked");
-    // createOpinionAction(opinion);
     try {
       const commentResponse = await axios.post(
         `http://localhost:3001/opinions/${id}`,
@@ -46,7 +35,11 @@ const CommentInputs = () => {
       );
       console.log("newitem resp", commentResponse);
       console.log("status codeee", commentResponse.status);
-      setCode(commentResponse.status);
+      setCode(() => commentResponse.status);
+      setOpinion({
+        fullName: "",
+        opinion: "",
+      });
       return commentResponse;
     } catch (error) {
       console.log(error);
@@ -75,7 +68,7 @@ const CommentInputs = () => {
             onChange={handleChange}
           />
         </label>
-        <button type="submit">Make Comment</button>
+        <button>Make Comment</button>
       </form>
       <Comments code={code} />
     </div>
