@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React from "react";
 import { useState } from "react";
 import Comments from "./Comments";
 import axios from "axios";
@@ -71,4 +71,4 @@ const CommentInputs = () => {
   );
 };
 
-export default memo(CommentInputs);
+export default CommentInputs;
