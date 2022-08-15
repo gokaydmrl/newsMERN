@@ -1,6 +1,5 @@
-import React, { useCallback } from "react";
-import { useState } from "react";
-import Comments from "./Comments";
+import React from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useMemo } from "react";
@@ -9,9 +8,9 @@ const CommentInputs = () => {
   console.log("comment inputs rendered");
   const { id } = useParams();
 
-  // const refreshComments = () => <Comments />;
+  const [comments, setComments] = useState([]);
 
-  const [code, setCode] = useState(null);
+  // const [code, setCode] = useState(null);
 
   const [opinion, setOpinion] = useState({
     fullName: "",
@@ -35,7 +34,8 @@ const CommentInputs = () => {
       );
       console.log("newitem resp", commentResponse);
       console.log("status codeee", commentResponse.status);
-      setCode(() => commentResponse.status);
+      // setCode(() => commentResponse.status);
+      comments.length++
       setOpinion({
         fullName: "",
         opinion: "",
@@ -45,6 +45,19 @@ const CommentInputs = () => {
       console.log(error);
     }
   };
+
+
+  useEffect(() => {
+    console.log("get comment effecti çalıştı");
+    const handler = async () => {
+      const response = await axios.get(
+        `http://localhost:3001/opinionsByNewId/${id}`
+      );
+      setComments(response.data);
+      console.log("comment resp", response.data);
+    };
+    handler();
+  }, [comments.length]);
 
   return (
     <div>
@@ -70,7 +83,22 @@ const CommentInputs = () => {
         </label>
         <button>Make Comment</button>
       </form>
-      <Comments code={code} />
+      <div>
+        {comments.map((comment) => {
+          return (
+            <div
+              style={{
+                textAlign: "left",
+                marginLeft: "400px",
+              }}
+              key={comment._id}
+            >
+              <p>{comment.fullName}</p>
+              <p>{comment.opinion}</p>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

@@ -17,7 +17,7 @@ exports.getOpinionsHandler = async (req, res) => {
 
 exports.createOpinionHandler = async (req, res) => {
   const id = req.params.id;
-  console.log("req.params.id", id);
+  // console.log("req.params.id", id);
   const { fullName, opinion } = req.body;
 
   const commentItem = await Opinion.create({
