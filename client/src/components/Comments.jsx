@@ -44,3 +44,24 @@
 // };
 
 // export default memo(Comments);
+/* 
+
+ <label>
+          Your Name
+          <input
+            type="text"
+            name="fullName"
+            value={opinion.fullName}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Your Opinion
+          <input
+            type="text"
+            name="opinion"
+            value={opinion.opinion}
+            onChange={handleChange}
+          />
+        </label>
+*/
